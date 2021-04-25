@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/3 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="title: 设计模式date: 2021-03-10 21:16:35tags:    设计模式是软件开发工程中非常重要的一种思想，几乎涵盖了开发过程中所有的问题，以及解决办法。在代码的阅读性，扩展性，重复利用上表现非常优异。但是并不是所有的软件都适合用设计模式，一些简单的设计开发可以根据具体情况去设计具体的算法，以提高开发效率。大型的开发比较适合用设计模式。设计模式一共有23种，下面我们将一">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/03/index.html">
+<meta property="og:url" content="http://example.com/2021/04/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: 设计模式date: 2021-03-10 21:16:35tags:    设计模式是软件开发工程中非常重要的一种思想，几乎涵盖了开发过程中所有的问题，以及解决办法。在代码的阅读性，扩展性，重复利用上表现非常优异。但是并不是所有的软件都适合用设计模式，一些简单的设计开发可以根据具体情况去设计具体的算法，以提高开发效率。大型的开发比较适合用设计模式。设计模式一共有23种，下面我们将一">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-04-25T01:16:35.550Z">
+<meta property="article:modified_time" content="2021-04-25T14:57:00.871Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,49 +154,158 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-设计模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 设计模式<br>date: 2021-03-10 21:16:35<br>tags:<br>    设计模式是软件开发工程中非常重要的一种思想，几乎涵盖了开发过程中所有的问题，以及解决办法。在代码的阅读性，扩展性，重复利用上表现非常优异。但是并不是所有的软件都适合用设计模式，一些简单的设计开发可以根据具体情况去设计具体的算法，以提高开发效率。大型的开发比较适合用设计模式。设计模式一共有23种，下面我们将一一介绍。</p>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>单例一般应用于全局中只需要一个该对像的情况， 自己创建自己并提供了该类的唯一访问接口。<br>一.懒汉式实现,<br>（1）该模式下选哟注意线程安全问题。使双检锁（DCLP）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			static SingletonLazy* m_instance;</span><br><span class="line">			static std::mutex     m_mutex;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;); &#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy()&#123;&#125;; &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			&#x2F;&#x2F;手动删除单例</span><br><span class="line">			static void DestroySingleton()</span><br><span class="line">			&#123;</span><br><span class="line">				delete m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				if(m_instance &#x3D;&#x3D; nullptr)   &#x2F;&#x2F;双重判断提高效率，避免每次调用Get_instance都进行一次加解锁</span><br><span class="line">				&#123;</span><br><span class="line">					std::lock_guard&lt;std::mutex&gt; lgard(m_mutex);</span><br><span class="line">					if(m_instance &#x3D;&#x3D; nullptr)</span><br><span class="line">					&#123;</span><br><span class="line">						m_instance &#x3D; new SingletonLazy();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				return m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;;</span><br><span class="line">SingletonLazy* SingletonLazy::m_instance &#x3D; NULL;  </span><br><span class="line">std::mutex SingletonLazy:: m_mutex; </span><br></pre></td></tr></table></figure>
+<p><strong>注意：由于编译器的实现不同，双检锁有时会失效。</strong> 例如：SingletonLazy = new SingletonLazy(), 在编译时这句代码分为三步<br>1 分配内存空间以保存单例对象。</p>
+<p>2 在分配的内存中构造一个单例对象。</p>
+<p>3 使m_instance指向分配的内存。<br>第二步和第三步顺序可能颠倒。 如果一个线程调用Get_instance该函数，代码走到m_instance = new SingletonLazy()这步时， 先给m_instance指向分配的内存，而没有进行对象的构造。此时又有一个线程访问Get_insatnce函数，此时m_instance已经不是空的了，返回实例给对方，由于此时实例没有构造出来，就会出现问题。</p>
+<p>C++11给出了双检锁失效的解决办法， 使用原子操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			static  std::atomic&lt;SingletonLazy*&gt; m_instance;</span><br><span class="line">			static std::mutex     m_mutex;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;);&#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy(); &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			&#x2F;&#x2F;手动删除单例</span><br><span class="line">			static void DestroySingleton()</span><br><span class="line">			&#123;</span><br><span class="line">				delete m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				SingletonLazy* tmp &#x3D; m_instance.load(std::memory_order_relaxed);</span><br><span class="line">				std::atomic_thread_fence(std::memory_order_acquire); &#x2F;&#x2F;获取屏障								</span><br><span class="line">				if(tmp &#x3D;&#x3D; nullptr)   </span><br><span class="line">				&#123;</span><br><span class="line">					std::lock_guard&lt;std::mutex&gt; lgard(m_mutex);</span><br><span class="line">					tmp &#x3D; m_instance.load(std::memory_order_relaxed); </span><br><span class="line">					if(tmp &#x3D;&#x3D; nullptr)</span><br><span class="line">					&#123;</span><br><span class="line">					</span><br><span class="line">						tmp &#x3D; new SingletonLazy();</span><br><span class="line">						std::atomic_thread_fence(std::memory_order_relaxed); &#x2F;&#x2F;释放屏障</span><br><span class="line">						m_instance.store(tmp, std::memory_order_relaxed);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				return tmp;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">&#125;;</span><br><span class="line">std::atomic&lt;SingletonLazy*&gt; SingletonLazy::m_instance &#x3D; NULL;  </span><br><span class="line">std::mutex SingletonLazy:: m_mutex; </span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>（2）还有一种懒汉式实现，是使用局部静态变量的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;);&#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">	public:</span><br><span class="line">			~SingletonLazy() &#123;&#125;;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				static SingletonLazy instance;</span><br><span class="line">				return &amp;instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法叫做 Meyers’ SingletonMeyer’s的单例， 《Effective C++》系列书籍的作者 Meyers 提出的。当变量在初始化时 ，并发进入声明语句时，并发线程将会阻塞，等待初始化结束。由于是静态变量，只初始化一次，声明时又线程安全。所以不必加锁。推荐懒汉式这样实现<br>（3）单例模式也可以用饿汉式实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy();</span><br><span class="line">			static SingletonLazy m_instance;</span><br><span class="line">			SingletonLazy（const SingletonLazy7）; &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;); &#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy(); &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				return &amp;m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line">SingletonLazy SingletonLazy::m_instance;</span><br></pre></td></tr></table></figure>
+<p>该模式下程序一开始对象就生成了，如果一直没有用到，就会造成一定的内存浪费</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-03-11T02:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/04/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">亲爱的访客：你好</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -215,8 +328,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
