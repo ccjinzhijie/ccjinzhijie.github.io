@@ -6,21 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>观察者模式 | Hexo</title>
+  <title>Archives: 2021/2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。Observer: 观察者抽象接口，所有观察者都要继承该类。ConcreteObserver: 具体的观察者，获取观察对象的状态变化。Subject： 观察对">
-<meta property="og:type" content="article">
-<meta property="og:title" content="观察者模式">
-<meta property="og:url" content="http://example.com/2021/04/29/Observer/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2021/02/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。Observer: 观察者抽象接口，所有观察者都要继承该类。ConcreteObserver: 具体的观察者，获取观察对象的状态变化。Subject： 观察对">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2021/04/29/Observer/Observer.jpg">
-<meta property="article:published_time" content="2021-04-29T16:03:56.246Z">
-<meta property="article:modified_time" content="2021-04-29T16:03:56.246Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/04/29/Observer/Observer.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -156,162 +150,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Observer" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      观察者模式
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/02/11/Observer/" class="archive-article-date">
+  	<time datetime="2021-02-11T23:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/02/11/Observer/">观察者模式</a>
     </h1>
   
 
-        
-        <a href="/2021/04/29/Observer/" class="archive-article-date">
-  	<time datetime="2021-04-29T16:03:56.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。<br><img src="/2021/04/29/Observer/Observer.jpg" alt="观察者模式图"><br>Observer: 观察者抽象接口，所有观察者都要继承该类。<br>ConcreteObserver: 具体的观察者，获取观察对象的状态变化。<br>Subject： 观察对象的抽象接口。<br>ConcreteSubject:具体的对象，对所有观察者进行记录，等到自己的状态发生变化时，及时通知所有观察者把自己的状态变化及时通知所有观察者。</p>
-<p>下面是代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">class Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Update(int nstate) &#x3D; 0;  &#x2F;&#x2F;当观察对象状态更新时会调用该函数</span><br><span class="line">		virtual ~Observer();</span><br><span class="line">&#125;；</span><br><span class="line"></span><br><span class="line">class ConcreteObserver : public Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">	</span><br><span class="line">	    void Update(int nstate)</span><br><span class="line">	    &#123;</span><br><span class="line">            std::cout&lt;&lt;&quot;State:&quot;&lt;&lt;&quot;观察的对象状态变成&quot;&lt;&lt;&quot;nstate&quot;&lt;&lt;endl;</span><br><span class="line">	    &#125;</span><br><span class="line">		</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Subject</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Attach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Detach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Notify(int n) &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteSubject</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	   List&lt;Observer*&gt; m_subject;</span><br><span class="line">    public:</span><br><span class="line">       void Attach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       m_subject.push_back(pOberver)</span><br><span class="line">	   &#125;</span><br><span class="line">       void Detach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       delete pOberver;</span><br><span class="line">		   m_subject.remove(pOberver);</span><br><span class="line">	   &#125;</span><br><span class="line">       void Notify()</span><br><span class="line">	   &#123;</span><br><span class="line">	       for(auto iter &#x3D; m_subject.bengin(); iter!&#x3D; m_subject.end()； iter++)</span><br><span class="line">		   &#123;</span><br><span class="line">		       (*iter)-&gt;Update(n);</span><br><span class="line">		   &#125;</span><br><span class="line">       &#125;   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<p>测试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">    Subject* sSub1 &#x3D; new ConcreteSubject();</span><br><span class="line">	Observer* sObser1 &#x3D; new ConcreteObserver();</span><br><span class="line">	Observer* sObser2 &#x3D; new ConcreteObserver();</span><br><span class="line">	sSub1-&gt;Attach(sObser1)</span><br><span class="line">	sSub1-&gt;Attach(sObser2)</span><br><span class="line">	sSub1-&gt;Notify(5);</span><br><span class="line">	delete sSub1;</span><br><span class="line">	delete sObser1;</span><br><span class="line">	delete sObser2;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    test();</span><br><span class="line">    retuen 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过继承Observer ，可以很方便的扩展新的观察者，在Update中可以重写，实现新的功能，这样之前与对象相关的代码无需改动。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/29/Observer/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2021/04/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">亲爱的访客：你好</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -334,8 +215,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

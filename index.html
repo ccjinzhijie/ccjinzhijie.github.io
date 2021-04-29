@@ -152,75 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Observer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/29/Observer/">观察者模式</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/29/Observer/" class="archive-article-date">
-  	<time datetime="2021-04-29T16:03:56.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。<br><img src="/2021/04/29/Observer/Observer.jpg" alt="观察者模式图"><br>Observer: 观察者抽象接口，所有观察者都要继承该类。<br>ConcreteObserver: 具体的观察者，获取观察对象的状态变化。<br>Subject： 观察对象的抽象接口。<br>ConcreteSubject:具体的对象，对所有观察者进行记录，等到自己的状态发生变化时，及时通知所有观察者把自己的状态变化及时通知所有观察者。</p>
-<p>下面是代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">class Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Update(int nstate) &#x3D; 0;  &#x2F;&#x2F;当观察对象状态更新时会调用该函数</span><br><span class="line">		virtual ~Observer();</span><br><span class="line">&#125;；</span><br><span class="line"></span><br><span class="line">class ConcreteObserver : public Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">	</span><br><span class="line">	    void Update(int nstate)</span><br><span class="line">	    &#123;</span><br><span class="line">            std::cout&lt;&lt;&quot;State:&quot;&lt;&lt;&quot;观察的对象状态变成&quot;&lt;&lt;&quot;nstate&quot;&lt;&lt;endl;</span><br><span class="line">	    &#125;</span><br><span class="line">		</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Subject</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Attach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Detach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Notify(int n) &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteSubject</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	   List&lt;Observer*&gt; m_subject;</span><br><span class="line">    public:</span><br><span class="line">       void Attach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       m_subject.push_back(pOberver)</span><br><span class="line">	   &#125;</span><br><span class="line">       void Detach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       delete pOberver;</span><br><span class="line">		   m_subject.remove(pOberver);</span><br><span class="line">	   &#125;</span><br><span class="line">       void Notify()</span><br><span class="line">	   &#123;</span><br><span class="line">	       for(auto iter &#x3D; m_subject.bengin(); iter!&#x3D; m_subject.end()； iter++)</span><br><span class="line">		   &#123;</span><br><span class="line">		       (*iter)-&gt;Update(n);</span><br><span class="line">		   &#125;</span><br><span class="line">       &#125;   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>测试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">    Subject* sSub1 &#x3D; new ConcreteSubject();</span><br><span class="line">	Observer* sObser1 &#x3D; new ConcreteObserver();</span><br><span class="line">	Observer* sObser2 &#x3D; new ConcreteObserver();</span><br><span class="line">	sSub1-&gt;Attach(sObser1)</span><br><span class="line">	sSub1-&gt;Attach(sObser2)</span><br><span class="line">	sSub1-&gt;Notify(5);</span><br><span class="line">	delete sSub1;</span><br><span class="line">	delete sObser1;</span><br><span class="line">	delete sObser2;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    test();</span><br><span class="line">    retuen 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过继承Observer ，可以很方便的扩展新的观察者，在Update中可以重写，实现新的功能，这样之前与对象相关的代码无需改动。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/29/Observer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -254,7 +185,7 @@
 <h3 id="远端部署"><a href="#远端部署" class="headerlink" title="远端部署"></a>远端部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="设计模式目录"><a href="#设计模式目录" class="headerlink" title="设计模式目录"></a>设计模式目录</h2><h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">1.单例模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">2.工厂模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/12/build-pattern/">3.建造者模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/02/16/Observer/">4.观察者模式</a></p>
+<h2 id="设计模式目录"><a href="#设计模式目录" class="headerlink" title="设计模式目录"></a>设计模式目录</h2><h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">1.单例模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">2.工厂模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/12/build-pattern/">3.建造者模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/02/11/Observer/">4.观察者模式</a></p>
 
       
 
@@ -495,6 +426,75 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Observer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/11/Observer/">观察者模式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/11/Observer/" class="archive-article-date">
+  	<time datetime="2021-02-11T23:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。<br><img src="/2021/02/11/Observer/Observer.jpg" alt="观察者模式图"><br>Observer: 观察者抽象接口，所有观察者都要继承该类。<br>ConcreteObserver: 具体的观察者，获取观察对象的状态变化。<br>Subject： 观察对象的抽象接口。<br>ConcreteSubject:具体的对象，对所有观察者进行记录，等到自己的状态发生变化时，及时通知所有观察者把自己的状态变化及时通知所有观察者。</p>
+<p>下面是代码示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">class Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Update(int nstate) &#x3D; 0;  &#x2F;&#x2F;当观察对象状态更新时会调用该函数</span><br><span class="line">		virtual ~Observer();</span><br><span class="line">&#125;；</span><br><span class="line"></span><br><span class="line">class ConcreteObserver : public Observer</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">	</span><br><span class="line">	    void Update(int nstate)</span><br><span class="line">	    &#123;</span><br><span class="line">            std::cout&lt;&lt;&quot;State:&quot;&lt;&lt;&quot;观察的对象状态变成&quot;&lt;&lt;&quot;nstate&quot;&lt;&lt;endl;</span><br><span class="line">	    &#125;</span><br><span class="line">		</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Subject</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void Attach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Detach(Observer* pOberver) &#x3D; 0;</span><br><span class="line">		virtual void Notify(int n) &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteSubject</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	   List&lt;Observer*&gt; m_subject;</span><br><span class="line">    public:</span><br><span class="line">       void Attach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       m_subject.push_back(pOberver)</span><br><span class="line">	   &#125;</span><br><span class="line">       void Detach(Observer* pOberver)</span><br><span class="line">       &#123;</span><br><span class="line">	       delete pOberver;</span><br><span class="line">		   m_subject.remove(pOberver);</span><br><span class="line">	   &#125;</span><br><span class="line">       void Notify()</span><br><span class="line">	   &#123;</span><br><span class="line">	       for(auto iter &#x3D; m_subject.bengin(); iter!&#x3D; m_subject.end()； iter++)</span><br><span class="line">		   &#123;</span><br><span class="line">		       (*iter)-&gt;Update(n);</span><br><span class="line">		   &#125;</span><br><span class="line">       &#125;   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">    Subject* sSub1 &#x3D; new ConcreteSubject();</span><br><span class="line">	Observer* sObser1 &#x3D; new ConcreteObserver();</span><br><span class="line">	Observer* sObser2 &#x3D; new ConcreteObserver();</span><br><span class="line">	sSub1-&gt;Attach(sObser1)</span><br><span class="line">	sSub1-&gt;Attach(sObser2)</span><br><span class="line">	sSub1-&gt;Notify(5);</span><br><span class="line">	delete sSub1;</span><br><span class="line">	delete sObser1;</span><br><span class="line">	delete sObser2;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    test();</span><br><span class="line">    retuen 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过继承Observer ，可以很方便的扩展新的观察者，在Update中可以重写，实现新的功能，这样之前与对象相关的代码无需改动。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/11/Observer/">展开全文 >></a>
         </p>
       
 
