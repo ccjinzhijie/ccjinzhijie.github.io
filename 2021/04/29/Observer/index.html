@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>观察者模式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。Observer: 观察者抽象接口，所有观察者都要继承该类。ConcreteObserver: 具体的观察者，获取观察对象的状态变化。Subject： 观察对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="http://example.com/2021/04/29/Observer/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="观察者模式是松耦合，对象通过抽象接口像观察者发送信息。当对象发生变化时，所有的观察者都能收到对应的信息。这一点和发布-订阅模式很像，但又不同。发布-订阅是完全不耦合的，发布者和订阅者双方都不知道对方的信息，双方通过第三者消息队列进行交流信息。Observer: 观察者抽象接口，所有观察者都要继承该类。ConcreteObserver: 具体的观察者，获取观察对象的状态变化。Subject： 观察对">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/2021/04/29/Observer/Observer.jpg">
+<meta property="article:published_time" content="2021-04-29T16:03:56.246Z">
+<meta property="article:modified_time" content="2021-04-29T16:03:56.246Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/04/29/Observer/Observer.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,16 +156,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Observer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Observer" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/29/Observer/">观察者模式</a>
+    <h1 class="article-title" itemprop="name">
+      观察者模式
     </h1>
   
 
@@ -183,6 +187,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -190,16 +215,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/29/Observer/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/29/Observer/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">亲爱的访客：你好</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -219,311 +303,14 @@
 
 
 
-
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/23/hello-world/">亲爱的访客：你好</a>
-    </h1>
   
 
-        
-        <a href="/2021/04/23/hello-world/" class="archive-article-date">
-  	<time datetime="2021-04-24T02:09:51.118Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>欢迎来到我的 <a target="_blank" rel="noopener" href="https://hexo.io/">博客</a>!  点击<a target="_blank" rel="noopener" href="https://hexo.io/docs/">hexo文档</a> 查找更多关于hexo信息. 如果遇到为题可以查看<a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">问题手册</a> 或者直接向hexo作者咨询 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">hexo作者</a>.</p>
-<h2 id="hexo快速入门指南"><a href="#hexo快速入门指南" class="headerlink" title="hexo快速入门指南"></a>hexo快速入门指南</h2><h3 id="创建一个新文章"><a href="#创建一个新文章" class="headerlink" title="创建一个新文章"></a>创建一个新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">写文章</a></p>
-<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="远端部署"><a href="#远端部署" class="headerlink" title="远端部署"></a>远端部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="设计模式目录"><a href="#设计模式目录" class="headerlink" title="设计模式目录"></a>设计模式目录</h2><h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">1.单例模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">2.工厂模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/03/12/build-pattern/">3.建造者模式</a><br><a target="_blank" rel="noopener" href="https://ccjinzhijie.github.io/2021/02/16/Observer/">4.观察者模式</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/23/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-build-pattern" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/12/build-pattern/">建造者模式</a>
-    </h1>
   
 
-        
-        <a href="/2021/03/12/build-pattern/" class="archive-article-date">
-  	<time datetime="2021-03-13T01:36:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>建造者模式也是用来生产对象的，它与工厂模式不同的是，建造者强调的是分步生成对象，当一个类的构造函数参数个数较多时，而且这些参数有些是可选的参数，可以考虑使用构造者模式。<br><img src="/2021/03/12/build-pattern/Builder_pattern.png" alt="建造者模式图"></p>
-<p>Product: 最终要生成的对象。<br>Builder：构建者的抽象基类。主要定义了Product的创建步骤，其派生类需要实现这些步骤。其会包含一个用来返回最终产品的方法Product getProduct()。<br>ConcreteBuilder: Builder的具体是实现类。<br>Director: 决定如何构建最终产品的算法. Construct(Builder builder)该方法用来使用具体的builder，就可以设置builder，等设置完成后，就可以通过builder的 getProduct() 方法获得最终的产品。<br>下面式代码示例<br>产品类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class  CarProduct</span><br><span class="line">&#123;</span><br><span class="line">	private:</span><br><span class="line">            string m_sWheel;     &#x2F;&#x2F;轮子</span><br><span class="line">            string m_sCarFrame;  &#x2F;&#x2F;车架；</span><br><span class="line">            string m_sCalss;     &#x2F;&#x2F;车窗玻璃</span><br><span class="line">            string m_carengine;  &#x2F;&#x2F;引擎</span><br><span class="line">	public:</span><br><span class="line">            void SetWheel(string strWheel)</span><br><span class="line">            &#123;</span><br><span class="line">		SetCarFrame(strWheel);</span><br><span class="line">            &#125;	</span><br><span class="line">            void SetFrame(string strCarFrame)</span><br><span class="line">            &#123;</span><br><span class="line">		this-&gt;m_sCarFrame &#x3D; strCarFrame;</span><br><span class="line">            &#125;</span><br><span class="line">            void SetClass（string strClass）</span><br><span class="line">            &#123;</span><br><span class="line">		   this-&gt;m_sCalss &#x3D; strClass;</span><br><span class="line">            &#125;</span><br><span class="line">            void SetEngine(string strEngine)</span><br><span class="line">            &#123;</span><br><span class="line">		    this-&gt;m_carengine &#x3D; strEngine;</span><br><span class="line">            &#125;</span><br><span class="line">            void ShowCarAttribute()</span><br><span class="line">            &#123;</span><br><span class="line">                std::cout&lt;&lt;&quot;车引擎：&quot;&lt;&lt;this-&gt;m_carengine&lt;&lt;endl;</span><br><span class="line">                std::cout&lt;&lt;&quot;车轮子：&quot;&lt;&lt;this-&gt;m_sWheel&lt;&lt;endl;</span><br><span class="line">                std::cout&lt;&lt;&quot;车窗玻璃：&quot;&lt;&lt;this-&gt;m_sCalss&lt;&lt;endl;</span><br><span class="line">                std::cout&lt;&lt;&quot;车架子：&quot;&lt;&lt;this-&gt;m_sCarFrame&lt;&lt;endl;</span><br><span class="line">            &#125;			</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>抽象基类建造者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class CarBulider</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">        virtual void SetWheel() &#x3D; 0;</span><br><span class="line">        virtual void SetFrame() &#x3D; 0;</span><br><span class="line">        virtual void SetClass() &#x3D; 0;</span><br><span class="line">        virtual void SetEngine() &#x3D; 0;</span><br><span class="line">        virtual CarProduct* GetCarproduct() &#x3D; 0;</span><br><span class="line">        virtual ~CarBulider();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体建造者，实际上用此类设置产品类的具体属性,我们创建一个BmwX1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class BmwCX1arBuilder : public CarBulider</span><br><span class="line">&#123;</span><br><span class="line">	private:</span><br><span class="line">	        CarProduct*   m_carProduct;</span><br><span class="line">        public:</span><br><span class="line">		BmwCX1arBuilder()</span><br><span class="line">		&#123;</span><br><span class="line">			m_carProduct &#x3D; new CarProduct();</span><br><span class="line">		&#125;	</span><br><span class="line">	        void SetWheel()</span><br><span class="line">            	&#123;</span><br><span class="line">			 m_carProduct-&gt;SetWheel(&quot;BmwX1的轮子&quot;);</span><br><span class="line">            	&#125;	</span><br><span class="line">           	 void SetFrame()</span><br><span class="line">            	&#123;</span><br><span class="line">			 m_carProduct-&gt;SetFrame(&quot;BmwX1的车架子&quot;);</span><br><span class="line">	        &#125;</span><br><span class="line">           	 void SetClass（）</span><br><span class="line">            	&#123;</span><br><span class="line">			 m_carProduct-&gt;SetClass(&quot;BmwX1的车玻璃&quot;);</span><br><span class="line">        	&#125;</span><br><span class="line">            	void SetEngine()</span><br><span class="line">            	&#123;</span><br><span class="line">			 m_carProduct-&gt;SetEngine(&quot;BmwX1的车引擎&quot;);</span><br><span class="line">            	&#125;</span><br><span class="line">            	virtual CarProduct* GetCarproduct()</span><br><span class="line">            	&#123;</span><br><span class="line">                	 return m_carProduct;</span><br><span class="line">            	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Director 指导者类， 用来控制和使用builder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class CarDirector</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">	        void MakeCar(CarBulider* CarBuling)</span><br><span class="line">		&#123;</span><br><span class="line">                	CarBuling-&gt;SetWheel();</span><br><span class="line">              	  	CarBuling-&gt;SetFrame();</span><br><span class="line">                	CarBuling-&gt;SetClass();</span><br><span class="line">                	CarBuling-&gt;SetEngine();</span><br><span class="line">            	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CarProduct*  MakeBmwCar(CarBulider* pCarBuild)</span><br><span class="line">&#123;</span><br><span class="line">    CarDirector* pCarDirector&#x3D; new CarDirector();</span><br><span class="line">    pCarDirector-&gt;MakeCar(pCarBuild);</span><br><span class="line">    CarProduct* pProduct &#x3D; pCarBuild-&gt;GetCarproduct();</span><br><span class="line">    pProduct-&gt;ShowCarAttribute();</span><br><span class="line">    delete pCarDirector;</span><br><span class="line">    return pProduct;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    CarBulider* pCarBuildX1 &#x3D; new BmwCX1arBuilder();</span><br><span class="line">    CarProduct* pCarX1 &#x3D;MakeBmwCar(pCarBuildX1);</span><br><span class="line">    delete pCarX1;</span><br><span class="line">    delete pCarBuildX1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果需要新增加BmwX5类类型的车扩展是比较容易的，只需要衍生一个X5的建造者即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class BmwCX5arBuilder : public CarBulider</span><br><span class="line">&#123;</span><br><span class="line">	private:</span><br><span class="line">	        CarProduct*   m_carProduct;</span><br><span class="line">    public:</span><br><span class="line">            BmwCX5arBuilder()</span><br><span class="line">            &#123;</span><br><span class="line">                m_carProduct &#x3D; new CarProduct();</span><br><span class="line">            &#125;</span><br><span class="line">	        void SetWheel()</span><br><span class="line">            &#123;</span><br><span class="line">                m_carProduct-&gt;SetWheel(&quot;BmwX5的轮子&quot;);</span><br><span class="line">            &#125;	</span><br><span class="line">            void SetFrame()</span><br><span class="line">            &#123;</span><br><span class="line">                m_carProduct-&gt;SetFrame(&quot;BmwX5的车架子&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            void SetClass（）</span><br><span class="line">            &#123;</span><br><span class="line">		m_carProduct-&gt;SetClass(&quot;BmwX5的车玻璃&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            void SetEngine()</span><br><span class="line">            &#123;</span><br><span class="line">		m_carProduct-&gt;SetEngine(&quot;BmwX5的车引擎&quot;);</span><br><span class="line">	    &#125;</span><br><span class="line">            virtual CarProduct* GetCarproduct()</span><br><span class="line">            &#123;</span><br><span class="line">                return m_carProduct;</span><br><span class="line">            &#125;			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用起来也很方便，不需要更改之前的逻辑, 直接写就好</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    CarBulider* pCarBuildX1 &#x3D; new BmwCX1arBuilder();</span><br><span class="line">    CarProduct* pCarX1 &#x3D;MakeBmwCar(pCarBuildX1);</span><br><span class="line">    delete pCarX1;</span><br><span class="line">    delete pCarBuildX1;</span><br><span class="line">	</span><br><span class="line">    &#x2F;&#x2F;新增X5</span><br><span class="line">    CarBulider* pCarBuildX5 &#x3D; new BmwCX5arBuilder();</span><br><span class="line">    CarProduct* pCarX5 &#x3D; MakeBmwCar(pCarBuildX5);</span><br><span class="line">    delete pCarBuildX5;</span><br><span class="line">    delete pCarX5；</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/12/build-pattern/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-工厂模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">工厂模式</a>
-    </h1>
   
 
-        
-        <a href="/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-03-12T03:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工厂模式用来创建对象，不会对外暴露创建逻辑，工厂模式分为简单工厂模式，工厂方法模式，抽象工厂模式</p>
-<h3 id="简单工场模式"><a href="#简单工场模式" class="headerlink" title="简单工场模式"></a>简单工场模式</h3><p>简单工厂模式只有一个工厂，使用方法比较简单。比较适合一种产品的对象创建以及扩展。如果需要新的衍生产品只需要继承car，然后在工厂中new出来就可以了。在具体对象创建过程中可以做具体的操作，提前设置一些前提条件，以便后续访问。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">enum CarType&#123;BENZ, </span><br><span class="line">             BMW&#125;;</span><br><span class="line"></span><br><span class="line">class Car</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void ShowCarType(void) &#x3D; 0;</span><br><span class="line">	virtual ~Car()&#123;&#125;;  &#x2F;&#x2F;一定要是虚函数，否则在衍生类析构时会造成内存泄漏</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BenzCar : public Car &#x2F;&#x2F;奔驰车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Benz::Benz()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BenzCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    ~BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BmwCar : public Car &#x2F;&#x2F;宝马车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Bmw::Bmw()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BmwCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class CarFactory &#x2F;&#x2F;车厂</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Car* createSpecificCar(CarType type)</span><br><span class="line">    &#123;</span><br><span class="line">        switch(type)</span><br><span class="line">        &#123;</span><br><span class="line">        case BENZ:&#x2F;&#x2F;生产奔驰车</span><br><span class="line">            return (new BenzCar());</span><br><span class="line">            break;</span><br><span class="line">        case BMW:&#x2F;&#x2F;生辰宝马车</span><br><span class="line">            return (new BmwCar());</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            return NULL;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main(int argc, char** argv)</span><br><span class="line">&#123;</span><br><span class="line">    CarFactory carfac;</span><br><span class="line">    Car* BenA &#x3D; carfac.createSpecificCar(BENZ);</span><br><span class="line">    Car* BmwB &#x3D; carfac.createSpecificCar(BMW);</span><br><span class="line"></span><br><span class="line">    delete BenA; </span><br><span class="line">	delete BenA;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><p>该模式下一种产品会有一种工厂去生产。该模式的优点是有体现了类的单一原则，使对象的生成有更大的操作空间，增加了代码的可读性，便于维护。缺点是增加了代码量，一个产品就需要一个工厂类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">class Car &#x2F;&#x2F;车 </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void ShowCarType(void) &#x3D; 0;</span><br><span class="line">	virtual ~Car()&#123;&#125;;   </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BenzCar : public Car &#x2F;&#x2F;奔驰车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Benz::Benz()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BenzCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    ~BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BmwCar : public Car &#x2F;&#x2F;宝马车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Bmw::Bmw()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BmwCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Factory</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual car* CreateCar() &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BenzCarFactory ： public Factory</span><br><span class="line">&#123;</span><br><span class="line">	virtual car* CreateCar()</span><br><span class="line">	&#123;</span><br><span class="line">	    return new BenzCar();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BmwCarFactory :public Factory</span><br><span class="line">&#123;</span><br><span class="line">    virtual car* CreateCar()</span><br><span class="line">    &#123;</span><br><span class="line">	    return new BmwCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Factory* Bmw &#x3D; new BmwCarFactory();</span><br><span class="line">	car* BmwCar &#x3D; Bmw-&gt;CreateCar();</span><br><span class="line">	Factory* BENZ &#x3D; new BenzCarFactory();</span><br><span class="line">	car* BENZCar &#x3D; BENZ-&gt;CreateCar();</span><br><span class="line">	delete Bmw;</span><br><span class="line">	delete BmwCar;</span><br><span class="line">	delete BENZ;</span><br><span class="line">	delete BENZCar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>抽象工厂模式是在工厂模式上稍加改进来的。在同种类产品类型中，用专门生产该种类的产品的工厂进行生产。该模式下同种类产品扩展比较方便，如果是新增一个产品类型就比较麻烦了，需要新增产品类和工厂</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">class Car &#x2F;&#x2F;车 </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void ShowCarType(void) &#x3D; 0;</span><br><span class="line">	virtual ~Car()&#123;&#125;;   </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BenzCar : public Car &#x2F;&#x2F;奔驰车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Benz::Benz()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BenzCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    ~BenzCar()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BmwCar : public Car &#x2F;&#x2F;宝马车</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;Bmw::Bmw()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BmwCar::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BmwX5Car : public BmwCar</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    BmwX5Car()</span><br><span class="line">    &#123;</span><br><span class="line">	    cout&lt;&lt;&quot;BmwX5Car:BmwX5Car()&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">    virtual void ShowCarType(void)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;BmwX5Car::ShowCarType()&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Factory</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual car* CreateCar() &#x3D; 0;</span><br><span class="line">	virtual car* CreateX5Car() &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class BenzCarFactory ： public Factory</span><br><span class="line">&#123;</span><br><span class="line">	virtual car* CreateCar()</span><br><span class="line">	&#123;</span><br><span class="line">	    return new BenzCar();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BmwCarFactory :public Factory</span><br><span class="line">&#123;</span><br><span class="line">    virtual car* CreateCar()</span><br><span class="line">    &#123;</span><br><span class="line">	    return new BmwCar();</span><br><span class="line">    &#125;</span><br><span class="line">	virtual car* CreateX5Car()</span><br><span class="line">	&#123;</span><br><span class="line">	    return new BmwX5Car();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Factory* Bmw &#x3D; new BmwCarFactory();</span><br><span class="line">	car* BmwCar &#x3D; Bmw-&gt;CreateCar();</span><br><span class="line">	Factory* BENZ &#x3D; new BenzCarFactory();</span><br><span class="line">	car* BENZCar &#x3D; BENZ-&gt;CreateCar();</span><br><span class="line">	car* BmwX5 &#x3D; Bmw-&gt;CreateX5Car();</span><br><span class="line">	delete Bmw;</span><br><span class="line">	delete BmwCar;</span><br><span class="line">	delete BENZ;</span><br><span class="line">	delete BENZCar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-03-11T02:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>       设计模式是软件开发工程中非常重要的一种思想，几乎涵盖了开发过程中所有的问题，以及解决办法。在代码的阅读性，扩展性，重复利用上表现非常优异。但是并不是所有的软件都适合用设计模式，一些简单的设计开发可以根据具体情况去设计具体的算法，以提高开发效率。大型的开发比较适合用设计模式。设计模式一共有23种，下面我们将一一介绍.
-</code></pre>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例一般应用于全局中只需要一个该对像的情况， 自己创建自己并提供了该类的唯一访问接口。<br>一.懒汉式实现,<br>（1）该模式下选哟注意线程安全问题。使双检锁（DCLP）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			static SingletonLazy* m_instance;</span><br><span class="line">			static std::mutex     m_mutex;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;); &#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy()&#123;&#125;; &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			&#x2F;&#x2F;手动删除单例</span><br><span class="line">			static void DestroySingleton()</span><br><span class="line">			&#123;</span><br><span class="line">				delete m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				if(m_instance &#x3D;&#x3D; nullptr)   &#x2F;&#x2F;双重判断提高效率，避免每次调用Get_instance都进行一次加解锁</span><br><span class="line">				&#123;</span><br><span class="line">					std::lock_guard&lt;std::mutex&gt; lgard(m_mutex);</span><br><span class="line">					if(m_instance &#x3D;&#x3D; nullptr)</span><br><span class="line">					&#123;</span><br><span class="line">						m_instance &#x3D; new SingletonLazy();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				return m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;;</span><br><span class="line">SingletonLazy* SingletonLazy::m_instance &#x3D; NULL;  </span><br><span class="line">std::mutex SingletonLazy:: m_mutex; </span><br></pre></td></tr></table></figure>
-<p><strong>注意：由于编译器的实现不同，双检锁有时会失效。</strong> 例如：SingletonLazy = new SingletonLazy(), 在编译时这句代码分为三步<br>1 分配内存空间以保存单例对象。</p>
-<p>2 在分配的内存中构造一个单例对象。</p>
-<p>3 使m_instance指向分配的内存。<br>第二步和第三步顺序可能颠倒。 如果一个线程调用Get_instance该函数，代码走到m_instance = new SingletonLazy()这步时， 先给m_instance指向分配的内存，而没有进行对象的构造。此时又有一个线程访问Get_insatnce函数，此时m_instance已经不是空的了，返回实例给对方，由于此时实例没有构造出来，就会出现问题。</p>
-<p>C++11给出了双检锁失效的解决办法， 使用原子操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			static  std::atomic&lt;SingletonLazy*&gt; m_instance;</span><br><span class="line">			static std::mutex     m_mutex;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;);&#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy(); &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			&#x2F;&#x2F;手动删除单例</span><br><span class="line">			static void DestroySingleton()</span><br><span class="line">			&#123;</span><br><span class="line">				delete m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				SingletonLazy* tmp &#x3D; m_instance.load(std::memory_order_relaxed);</span><br><span class="line">				std::atomic_thread_fence(std::memory_order_acquire); &#x2F;&#x2F;获取屏障								</span><br><span class="line">				if(tmp &#x3D;&#x3D; nullptr)   </span><br><span class="line">				&#123;</span><br><span class="line">					std::lock_guard&lt;std::mutex&gt; lgard(m_mutex);</span><br><span class="line">					tmp &#x3D; m_instance.load(std::memory_order_relaxed); </span><br><span class="line">					if(tmp &#x3D;&#x3D; nullptr)</span><br><span class="line">					&#123;</span><br><span class="line">					</span><br><span class="line">						tmp &#x3D; new SingletonLazy();</span><br><span class="line">						std::atomic_thread_fence(std::memory_order_relaxed); &#x2F;&#x2F;释放屏障</span><br><span class="line">						m_instance.store(tmp, std::memory_order_relaxed);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				return tmp;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">&#125;;</span><br><span class="line">std::atomic&lt;SingletonLazy*&gt; SingletonLazy::m_instance &#x3D; NULL;  </span><br><span class="line">std::mutex SingletonLazy:: m_mutex; </span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>（2）还有一种懒汉式实现，是使用局部静态变量的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy()&#123;&#125;;</span><br><span class="line">			SingletonLazy(const SingletonLazy&amp;); &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;);&#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">	public:</span><br><span class="line">			~SingletonLazy() &#123;&#125;;</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				static SingletonLazy instance;</span><br><span class="line">				return &amp;instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方法叫做 Meyers’ SingletonMeyer’s的单例， 《Effective C++》系列书籍的作者 Meyers 提出的。当变量在初始化时 ，并发进入声明语句时，并发线程将会阻塞，等待初始化结束。由于是静态变量，只初始化一次，声明时又线程安全。所以不必加锁。推荐懒汉式这样实现<br>（3）单例模式也可以用饿汉式实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class SingletonLazy</span><br><span class="line">&#123;</span><br><span class="line">	private: </span><br><span class="line">			SingletonLazy();</span><br><span class="line">			static SingletonLazy m_instance;</span><br><span class="line">			SingletonLazy（const SingletonLazy7）; &#x2F;&#x2F;防止拷贝构造</span><br><span class="line">			SingletonLazy&amp; operator &#x3D; (const SingletonLazy&amp;); &#x2F;&#x2F;防止赋值运算符拷贝对象</span><br><span class="line">			~SingletonLazy(); &#x2F;&#x2F;防止外界delete；</span><br><span class="line">	public:</span><br><span class="line">			static SingletonLazy* Get_instance()</span><br><span class="line">			&#123;</span><br><span class="line">				return &amp;m_instance;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line">SingletonLazy SingletonLazy::m_instance;</span><br></pre></td></tr></table></figure>
-<p>该模式下程序一开始对象就生成了，如果一直没有用到，就会造成一定的内存浪费</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -546,8 +333,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
