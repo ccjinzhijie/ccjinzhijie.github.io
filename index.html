@@ -228,6 +228,74 @@
 
 
   
+    <article id="post-AdapterModel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/06/AdapterModel/">适配器模式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/06/AdapterModel/" class="archive-article-date">
+  	<time datetime="2021-04-07T02:11:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>适配器主要用来兼容其他接口，重复使用该类，类的适配器模式是把适配的类的API转换成为目标类的API。在增加新功能时，为了不改变现有的接口，可以考虑使用适配器。<br>下面这种情况比较适用于适配器：<br>我国电器的电压与国外的电压不一样，比如国内是220v,而美国的供电电压是120，如果直接从国外买来的电器需要经过一个变压才能在家里正常使用。我们在不改变家里面供电电压的情况下可以使用适配器模式<br><img src="/2021/04/06/AdapterModel/Adapter.jpg" alt="适配器模式图"><br>Target: 接口基类。定义方法<br>ConcreteTarget:具体方法类，实现了基类中定义的接口。即中国的供电电压<br>Adaptee： 要适配的接口，与target中的方法冲突，即供电电压不一样。<br>Adapter: 适配器，用来适配美国电压，使调用方法一致，便于开发者使用<br>适配器代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Target</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void ChinaSupplyVoltage() &#x3D; 0;</span><br><span class="line">    virtual ~Target()&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteTarget: public Target</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void ChinaSupplyVoltage()</span><br><span class="line">    &#123;</span><br><span class="line">	std::cout&lt;&lt;&quot;中国电器正常工作!!!!&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Adaptee</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    void USASupplyVoltage()</span><br><span class="line">    &#123;</span><br><span class="line">	std::cout&lt;&lt;&quot;美国电器正常工作!!!!&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Adapter :public Target</span><br><span class="line">&#123;</span><br><span class="line">	private：</span><br><span class="line">		std::shared_ptr&lt;Adaptee&gt; m_padaptee;</span><br><span class="line">	public:</span><br><span class="line">	Adapter(shared_ptr&lt;Adaptee&gt; padaptee)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_padaptee &#x3D; padaptee;</span><br><span class="line">	&#125;</span><br><span class="line">	void ChinaSupplyVoltage()</span><br><span class="line">	&#123;</span><br><span class="line">		m_padaptee.get()-&gt;USASupplyVoltage();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	shared_ptr&lt;Target&gt; pTargetC &#x3D; make_shared&lt;ConcreteTarget&gt;();</span><br><span class="line">	pTargetC.get()-&gt;ChinaSupplyVoltage();</span><br><span class="line">	shared_ptr&lt;Target&gt; pTargetU &#x3D; make_shared&lt;Adapter&gt;(make_shared&lt;Adaptee&gt;);</span><br><span class="line">	pTargetU.get()-&gt;ChinaSupplyVoltage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>适配器模式可以很方便使用，使后续开发代码易读。如果在新增一个适配器接口，可以继续继承Target，然后在子类中实现具体的业务。但由于适配器主要兼容接口，如果滥用会造成代码内部过于复杂。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/06/AdapterModel/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-build-pattern" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -495,6 +563,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/02/11/Observer/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-StrategyModel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/StrategyModel/">策略模式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/03/StrategyModel/" class="archive-article-date">
+  	<time datetime="2021-02-04T00:14:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>策略模式主要用来使用一系列的算法，或者对一个问题不同实现方式的情况。他方便使用和扩展，统一使用一个接口。<br><img src="/2021/02/03/StrategyModel/Strategy.jpg" alt="策略模式"><br>Strategy:方法基类，具体算法主要由其子类去实现<br>StrategyOne,StratgyTwo：具体方法类，主要实现了DoSomething()方法。<br>Client: 控制类，主要用来执行算法。<br>下面是使用场景：<br>小明要去北京，有坐飞机和做高铁两种选择。<br>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Strategy</span><br><span class="line">&#123;</span><br><span class="line">    virtual void DoSomething() &#x3D; 0;</span><br><span class="line">    virtual ~Strategy();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class StrategyOne : public  Strategy</span><br><span class="line">&#123;</span><br><span class="line">    void DoSomething()</span><br><span class="line">    &#123;</span><br><span class="line">	std::cout&lt;&lt;&quot;坐飞机去北京!!!&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class StrategyTwo : public  Strategy</span><br><span class="line">&#123;</span><br><span class="line">    void DoSomething()</span><br><span class="line">    &#123;</span><br><span class="line">	std::cout&lt;&lt;&quot;坐火车去北京!!!&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Client</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	shared_ptr&lt;Strategy&gt; m_pstrategy;</span><br><span class="line">	public:</span><br><span class="line">	    Client(shared_ptr&lt;Strategy&gt; pStrategy)</span><br><span class="line">	    &#123;</span><br><span class="line">		this-&gt;m_pstrategy &#x3D; pStrategy;</span><br><span class="line">	    &#125;</span><br><span class="line">	    void ExecStrategy()</span><br><span class="line">	    &#123;</span><br><span class="line">		m_pstrategy.get()-&gt;DoSomething();</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    std::shared_ptr&lt;Client&gt; pClientTwo &#x3D; std::make_shared&lt;Client&gt;(std::make_shared&lt;StrategyTwo&gt;());</span><br><span class="line">    pClientTwo.get()-&gt;ExecStrategy(); </span><br><span class="line">    std::shared_ptr&lt;Client&gt; pClientOne &#x3D; std::make_shared&lt;Client&gt;(std::make_shared&lt;pClientOne&gt;());</span><br><span class="line">    pClientOne.get()-&gt;ExecStrategy();	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该模式下如果在需要增加一种方式去北京比如自驾， 只需要继承Strategy，重写一个方法即可，调用方式不变。程序容易理解且容易扩展。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/03/StrategyModel/">展开全文 >></a>
         </p>
       
 
