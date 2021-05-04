@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>模板模式 | Hexo</title>
+  <title>VisitorPattern | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="模板模式主要用来定义操作的骨架，可以在不改变原有操作顺序的情况下增加新的同类型操作的对象。或者定义一些算法骨架，采用不同的实现方法去实现，使得代码看起来统一整洁。TemplatePattern: 接口类，定义方法接口，一个算法或者操作的骨架ConcreteTwo： 一种操作的具体实现，继承了基类TemplatePattern， 实现了具体的步骤ConcreteOne： 一种操作的其他实现，继承了基">
-<meta property="og:type" content="article">
-<meta property="og:title" content="模板模式">
-<meta property="og:url" content="http://example.com/2021/03/28/Template-Pattern/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="VisitorPattern">
+<meta property="og:url" content="http://example.com/2021/05/02/VisitorPattern/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="模板模式主要用来定义操作的骨架，可以在不改变原有操作顺序的情况下增加新的同类型操作的对象。或者定义一些算法骨架，采用不同的实现方法去实现，使得代码看起来统一整洁。TemplatePattern: 接口类，定义方法接口，一个算法或者操作的骨架ConcreteTwo： 一种操作的具体实现，继承了基类TemplatePattern， 实现了具体的步骤ConcreteOne： 一种操作的其他实现，继承了基">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2021/03/28/Template-Pattern/Template.jpg">
-<meta property="article:published_time" content="2021-03-29T01:20:46.000Z">
-<meta property="article:modified_time" content="2021-05-03T02:59:28.000Z">
+<meta property="article:published_time" content="2021-05-03T03:25:37.000Z">
+<meta property="article:modified_time" content="2021-05-03T03:25:37.507Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/28/Template-Pattern/Template.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -156,32 +152,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Template-Pattern" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VisitorPattern" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      模板模式
+      VisitorPattern
     </h1>
   
 
         
-        <a href="/2021/03/28/Template-Pattern/" class="archive-article-date">
-  	<time datetime="2021-03-29T01:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-28</time>
+        <a href="/2021/05/02/VisitorPattern/" class="archive-article-date">
+  	<time datetime="2021-05-03T03:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>模板模式主要用来定义操作的骨架，可以在不改变原有操作顺序的情况下增加新的同类型操作的对象。或者定义一些算法骨架，采用不同的实现方法去实现，使得代码看起来统一整洁。<br><img src="/2021/03/28/Template-Pattern/Template.jpg" alt="模板模式图"><br>TemplatePattern: 接口类，定义方法接口，一个算法或者操作的骨架<br>ConcreteTwo： 一种操作的具体实现，继承了基类TemplatePattern， 实现了具体的步骤<br>ConcreteOne： 一种操作的其他实现，继承了基类TemplatePattern， 实现了具体的步骤<br>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class TemplatePattern</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void StepOne() &#x3D; 0;</span><br><span class="line">	virtual void StepTwo() &#x3D; 0;</span><br><span class="line">	virtual void StepThree() &#x3D; 0;</span><br><span class="line">	virtual ~TemplatePattern();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteOne：public TemplatePattern</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void StepOne()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteOne： One&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void StepTwo()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteOne： Two&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	void StepThree()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteOne： Threee&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteTwo：public TemplatePattern</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void StepOne()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteTwo： One&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void StepTwo()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteTwo： Two&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	void StepThree()</span><br><span class="line">	&#123;</span><br><span class="line">	    std::cout&lt;&lt;&quot;ConcreteTwo： Threee&quot;&lt;&lt;std::endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>测试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	shared_ptr&lt;TemplatePattern&gt; pOne &#x3D; make_shared&lt;ConcreteOne&gt;();</span><br><span class="line">	pOne.get()-&gt;StepOne();</span><br><span class="line">	pOne.get()-&gt;StepTwo();</span><br><span class="line">	pOne.get()-&gt;StepThree();</span><br><span class="line">	</span><br><span class="line">	shared_ptr&lt;TemplatePattern&gt; pTwo &#x3D; make_shared&lt;ConcreteTwo&gt;();</span><br><span class="line">	pTwo.get()-&gt;StepOne();</span><br><span class="line">	pTwo.get()-&gt;StepTwo();</span><br><span class="line">	pTwo.get()-&gt;StepThree();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>模板模式使用使业务代码整齐划一，编写也比较方便。不足之处是不同的实现都需要添加一个子类去实现对应的算法。</p>
-
+        
       
 
       
@@ -260,7 +251,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/28/Template-Pattern/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/02/VisitorPattern/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +265,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/03/29/BridgePattern/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/02/MVCPattern/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          桥接模式
+          MVCPattern
         
       </div>
     </a>
   
   
-    <a href="/2021/03/12/build-pattern/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">建造者模式</div>
+    <a href="/2021/05/02/NullObjectPattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NullObjectPattern</div>
       <i class="icon-circle-right"></i>
     </a>
   
