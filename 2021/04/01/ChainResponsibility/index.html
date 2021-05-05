@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | Hexo</title>
+  <title>责任链模式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/page/3/index.html">
+  <meta name="description" content="责任链模式使多个对象都有机会去处理请求，从而避免接收者和发送者之间的耦合关系，将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理他为止。责任链上的对像只要满足处理条件都可以对请求进行处理，如果不满足，则将此请求传递给链上的下一个对像。！责任链图Handler: 责任链基类，定义具体接口。ConcreteHandlerOne: 责任链上的一个具体对象，可以处理请求，也可以把请求传递给下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="责任链模式">
+<meta property="og:url" content="http://example.com/2021/04/01/ChainResponsibility/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="责任链模式使多个对象都有机会去处理请求，从而避免接收者和发送者之间的耦合关系，将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理他为止。责任链上的对像只要满足处理条件都可以对请求进行处理，如果不满足，则将此请求传递给链上的下一个对像。！责任链图Handler: 责任链基类，定义具体接口。ConcreteHandlerOne: 责任链上的一个具体对象，可以处理请求，也可以把请求传递给下">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-04-02T01:20:13.000Z">
+<meta property="article:modified_time" content="2021-05-06T12:57:38.000Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,187 +154,168 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ChainResponsibility" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      责任链模式
+    </h1>
+  
+
+        
+        <a href="/2021/04/01/ChainResponsibility/" class="archive-article-date">
+  	<time datetime="2021-04-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>责任链模式使多个对象都有机会去处理请求，从而避免接收者和发送者之间的耦合关系，将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理他为止。<br>责任链上的对像只要满足处理条件都可以对请求进行处理，如果不满足，则将此请求传递给链上的下一个对像。<br>！<a href="Chain.jgp">责任链图</a><br>Handler: 责任链基类，定义具体接口。<br>ConcreteHandlerOne: 责任链上的一个具体对象，可以处理请求，也可以把请求传递给下一个对象。<br>ConcreteHandlerTwo: 责任链上的一个另一个具体对象，可以处理请求，也可以把请求传递给下一个对象。<br>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">class Handler</span><br><span class="line">&#123;</span><br><span class="line">protected:</span><br><span class="line">    weak_ptr&lt;Handler&gt; m_nexthandler;</span><br><span class="line">public:</span><br><span class="line">    virtual ~Handler()&#123;&#125;;</span><br><span class="line">    virtual void HandlRequest(int nrequest) &#x3D; 0;</span><br><span class="line">	virtual void SetNextHandler(shared_ptr&lt;Handler&gt; phandler) &#x3D; 0;</span><br><span class="line">	virtual weak_ptr&lt;Handler&gt; GetNextHanlder() &#x3D; 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteHandlerOne : public Handler</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	    weak_ptr&lt;Handler&gt; m_nexthandler;</span><br><span class="line">    public:</span><br><span class="line">	   void HandlRequest(int nrequest)</span><br><span class="line">	   &#123;</span><br><span class="line">	       if(nrequest&gt; 10)</span><br><span class="line">		   &#123;</span><br><span class="line">		        std::cout&lt;&lt;&quot;ConcreteHandlerOne deal this requestion:&quot;&lt;&lt;nrequest&lt;&lt;std::endl;</span><br><span class="line">		   &#125;</span><br><span class="line">		   if(!m_nexthandler.expired())</span><br><span class="line">		   &#123;</span><br><span class="line">		        std::cout&lt;&lt;&quot;ConcreteHandlerOne cannot deal this requestion, pass the Next!!&quot;&lt;&lt;std::endl;</span><br><span class="line">				m_nexthandler.lock()-&gt;HandlRequest(nrequest);</span><br><span class="line">		   &#125;</span><br><span class="line">	   &#125;</span><br><span class="line">	   void SetNextHandler(shared_ptr&lt;Handler&gt; phandler)</span><br><span class="line">       &#123;</span><br><span class="line">	       this-&gt;m_nexthandler &#x3D; phandler;</span><br><span class="line">	   &#125;</span><br><span class="line">	   weak_ptr&lt;Handler&gt; GetNextHanlder()</span><br><span class="line">	   &#123;</span><br><span class="line">	       return m_nexthandler;</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ConcreteHandlerTwo : public Handler</span><br><span class="line">&#123;</span><br><span class="line">    private:</span><br><span class="line">	    weak_ptr&lt;Handler&gt; m_nexthandler;</span><br><span class="line">    public:</span><br><span class="line">	   void HandlRequest(int nrequest)</span><br><span class="line">	   &#123;</span><br><span class="line">	       if(nrequest&gt; 20)</span><br><span class="line">		   &#123;</span><br><span class="line">		        std::cout&lt;&lt;&quot;ConcreteHandlerTwo deal this requestion:&quot;&lt;&lt;nrequest&lt;&lt;std::endl;</span><br><span class="line">		   &#125;</span><br><span class="line">		   if(!m_nexthandler.expired())</span><br><span class="line">		   &#123;</span><br><span class="line">		        std::cout&lt;&lt;&quot;ConcreteHandlerTwo cannot deal this requestion, pass the Next!!&quot;&lt;&lt;std::endl;</span><br><span class="line">				m_nexthandler.lock()-&gt;HandlRequest(nrequest);</span><br><span class="line">		   &#125;</span><br><span class="line">	   &#125;</span><br><span class="line">	   void SetNextHandler(shared_ptr&lt;Handler&gt; phandler)</span><br><span class="line">       &#123;</span><br><span class="line">	       this-&gt;m_nexthandler &#x3D; phandler;</span><br><span class="line">	   &#125;</span><br><span class="line">	   weak_ptr&lt;Handler&gt; GetNextHanlder()</span><br><span class="line">	   &#123;</span><br><span class="line">	       return m_nexthandler;</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    shared_ptr&lt;Handler&gt; phandlerOne &#x3D; make_shared&lt;ConcreteHandlerOne&gt;();</span><br><span class="line">	shared_ptr&lt;Handler&gt; phandlerTwo &#x3D; make_shared&lt;ConcreteHandlerTwo&gt;();</span><br><span class="line">	phandlerOne.get()-&gt;SetNextHandler(phandlerTwo);</span><br><span class="line">	</span><br><span class="line">	phandlerOne-&gt;HandlRequest(10);</span><br><span class="line">	phandlerOne-&gt;HandlRequest(25);</span><br><span class="line">	phandlerTwo-&gt;HandlRequest(100);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>责任链模式不能保证求请求一定被接收，其中一格对象没有后继对象会造成循环调用。责任链一般会与建造者或者策略模式结合，通过设定一定的条件的处理相应的请求。责任链是很灵活的，根据需要也可以写成有前继对象的情况。不过要注意防止循环调用。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/28/Template-Pattern/" class="archive-article-date">
-  	<time datetime="2021-03-29T01:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/28/Template-Pattern/">模板模式</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/01/ChainResponsibility/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/build-pattern/" class="archive-article-date">
-  	<time datetime="2021-03-13T01:36:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/04/06/AdapterModel/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          适配器模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/30/CommandPattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">命令模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/build-pattern/">建造者模式</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-03-12T03:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/11/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">工厂模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-03-11T02:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/11/Observer/" class="archive-article-date">
-  	<time datetime="2021-02-11T23:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/11/Observer/">观察者模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/03/StrategyModel/" class="archive-article-date">
-  	<time datetime="2021-02-04T00:14:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/03/StrategyModel/">策略模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -354,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
